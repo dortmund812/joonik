@@ -1,0 +1,23 @@
+¡Hola de Joonik!
+
+Esta es una prueba corta creada para darle un problema común que resolver.
+
+Nuestra prueba consiste en arreglar un componente web personalizado que incrementa y disminuye el valor en una entrada de texto. Estas son las diferentes preguntas que tendrá que abordar y corregir en el código:
+
+1. El componente no se carga. ¿Lo que falta?
+
+	RESPUESTA: Hacia falta colocar el elemento super(); en el constructor de la clase.
+
+2. La acción de decremento no funciona correctamente, ¿puede decirnos por qué?
+
+	RESPUESTA: al intentar disminuir valor actual lo tomaba a partir de 0 por lo cual empezaba a contar de forma negativa.
+
+3. Desactive el botón de disminución cuando sea necesario para que el valor del componente no sea negativo.
+
+4. La inicialización del valor del componente no funciona, corríjalo.
+
+Enviamos el archivo HTML que incluye el código en el que estará trabajando. Devuélvalo arreglado con una breve explicación de lo que hizo para lograrlo al final del día (antes de las 23:59:59).
+
+Para obtener documentación sobre componentes web, puede consultar la siguiente URL:
+
+https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements

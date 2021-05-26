@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Component Test</title>
+<style>
+	body{
+		font-family:sans-serif}
+	x-spinner{
+		display:inline-flex;
+		align-items:center
+	}
+	x-spinner>input{
+		width:100px;
+		margin:0 2px;
+		text-align:center
+	}
+</style>
+</head>
+
+<body>
+<h1>Web Component Test</h1>
+<p>Click on the +/- buttons to see the changes</p>
+<div style="">
+	<x-spinner></x-spinner>
+	<span>&emsp;</span>
+	<x-spinner value="2"></x-spinner>
+</div>
+
+<script>
+customElements.define('x-spinner', class extends HTMLElement {
+	constructor() {
+		super();
+		this.value = 0;
+	}
+
+	connectedCallback() {
+		if (this.firstElementChild) return
+
+		const status_input = document.createElement('input')
+		status_input.type = 'text'
+		status_input.readOnly = true
+		status_input.value = this.value
+
+		const minus_btn = document.createElement('button')
+		minus_btn.type = 'button'
+		minus_btn.innerHTML = '&#x2796;'
+		minus_btn.disabled = true
+
+		minus_btn.onclick = function() {
+			let valueAct = --status_input.value
+			status_input.value = valueAct
+			valueAct <= 0 ? minus_btn.disabled = true : minus_btn.disabled = false
+		}
+
+		const plus_btn = document.createElement('button')
+		plus_btn.type = 'button'
+		plus_btn.innerHTML = '&#x2795;'
+
+		plus_btn.onclick = () => {
+			let valueAct = ++status_input.value
+			status_input.value = valueAct
+			valueAct <= 0 ? minus_btn.disabled = true : minus_btn.disabled = false
+		}
+
+		this.appendChild(minus_btn)
+		this.appendChild(status_input)
+		this.appendChild(plus_btn)
+	}
+});
+</script>
+</body>
+
+</html>
